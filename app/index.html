@@ -1,10 +1,36 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>InvoiceCreator - Create your invoice in 3 minutes!</title>
-        <link rel="stylesheet" href="app/lib/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/base.css">
+        <script src="lib/jquery/jquery.min.js"></script>
+        <script>
+	        // Include angular-loader to allow modules to be loaded in any order.
+	        /*
+	           AngularJS v1.0.2
+	           (c) 2010-2012 Google, Inc. http://angularjs.org
+	           License: MIT
+	         */
+	        (function(i){'use strict';function d(c,b,e){return c[b]||(c[b]=e())}return d(d(i,"angular",Object),"module",function(){var c={};return function(b,e,f){e&&c.hasOwnProperty(b)&&(c[b]=null);return d(c,b,function(){function a(a,b,d){return function(){c[d||"push"]([a,b,arguments]);return g}}if(!e)throw Error("No module: "+b);var c=[],d=[],h=a("$injector","invoke"),g={_invokeQueue:c,_runBlocks:d,requires:e,name:b,provider:a("$provide","provider"),factory:a("$provide","factory"),service:a("$provide","service"), value:a("$provide","value"),constant:a("$provide","constant","unshift"),filter:a("$filterProvider","register"),controller:a("$controllerProvider","register"),directive:a("$compileProvider","directive"),config:h,run:function(a){d.push(a);return this}};f&&h(f);return g})}})})(window);
+        </script>
+    </head>    
+    <body ng-app="myApp">
+    	<div id="container" class="col-sm-12">
+	    	<h1 class="text-center">Welcome to InvoiceCreator app.</h1>
+	    	<main id="view-container">
+                <div class="container" ng-view>
 
-    </head>
-    <body></body>
+                </div>
+	      	</main>
+	     </div>
+	    <script src="lib/angular/angular.js"></script>
+	    <script src="lib/angular/angular-route.js"></script>
+	    <script src="lib/angular/ui-bootstrap-tpls.min.js"></script>
+	    <script src="app.js"></script>
+        <script src="module/common/directives/form/rblInput.js"></script>
+    	<script src="module/invoice/invoiceController.js"></script>
+    </body>
 </html>
