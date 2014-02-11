@@ -7,11 +7,10 @@
 	</address>
 </div>
 
+<form class="invoice-form css-form" name="invoiceForm" role="form" novalidate>
 <div class="row">
 	<h2>Invoice Form <small>(builder form)</small></h2>
-	<form class="invoice-form css-form" name="invoiceForm" role="form" novalidate>
-
-		<div class="col-sm-3 col-sm-offset-0">
+        <div class="col-sm-3 col-sm-offset-0">
             <h2>FROM</h2>
             <div class="form-group" ng-class="{ 'has-error' : invoiceForm.name.$invalid && !invoiceForm.name.$pristine }">
                 <label>Name</label>
@@ -40,32 +39,35 @@
                 <!--<p ng-show="invoiceForm.regon.$invalid && !invoiceForm.regon.$pristine" class="help-block">Regon is required.</p>-->
             </div>
 
-
-		</div>
+        </div>
 
         <div class="col-sm-3 col-sm-offset-6">
             <h2>TO</h2>
             <div class="form-group" ng-class="{ 'has-error' : invoiceForm.name.$invalid && !invoiceForm.name.$pristine }">
                 <label>Name</label>
-                <input type="text" name="name" class="form-control" ng-model="invoice.name" tooltip="Name" required>
+                <input rbl-input type="text" name="name" class="form-control" ng-model="invoice.name" tooltip="Name" required>
                 <p ng-show="invoiceForm.name.$invalid && !invoiceForm.name.$pristine" class="help-block">Name is required.</p>
             </div>
 
             <div class="form-group" ng-class="{ 'has-error' : invoiceForm.address.$invalid && !invoiceForm.address.$pristine }">
                 <label>Address</label>
-                <input type="text" name="address" class="form-control" ng-model="invoice.address" tooltip="Address" required>
+                <input rbl-input type="text" name="address" class="form-control" ng-model="invoice.address" tooltip="Address" required>
                 <p ng-show="invoiceForm.address.$invalid && !invoiceForm.address.$pristine" class="help-block">Address is required.</p>
             </div>
-            <!-- <input type="text" ng-model="invoice.address" name="invoiceAddress" required tooltip="Address"/> -->
-                <!-- <input type="text" value="Click me!" tooltip="See? Now click away..."  tooltip-trigger="focus" tooltip-placement="right" 	class="form-control" /> -->
         </div>
-        <div class="clearfix"></div>
-        <div class="col-sm-offset-4">
-            <button class="btn btn-secondary" ng-click="reset()" ng-disabled="isUnchanged(user)">RESET</button>
-            <button class="btn btn-primary" ng-click="update(invoice)" ng-disabled="invoiceForm.$invalid || isUnchanged(invoice)">
-                SAVE
-            </button>
-
-        </div>
-	</form>
 </div>
+<div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+        <div class="gridStyle" ng-grid="gridOptions"></div>
+    </div>
+</div>
+    
+<div class="row">        
+    <div class="col-sm-offset-4">
+        <button class="btn btn-secondary" ng-click="reset()" ng-disabled="isUnchanged(user)">RESET</button>
+        <button class="btn btn-primary" ng-click="update(invoice)" ng-disabled="invoiceForm.$invalid || isUnchanged(invoice)">
+            SAVE
+        </button>
+    </div>
+</div>
+</form>

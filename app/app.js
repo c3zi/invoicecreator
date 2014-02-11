@@ -4,6 +4,7 @@
 var myApp = angular.module('myApp',
     [
         'ngRoute',
+        'ngGrid',
         'ui.bootstrap',
         'directives.form',
         'invoice'
