@@ -56,18 +56,28 @@
             </div>
         </div>
 </div>
+    
+<div class="row">
+    <div class="cols-sm-10 col-sm-offset-5">
+        <button type="button" class="btn btn-secondary" ng-click="addRow()">Add</button>
+        <button type="button" class="btn btn-secondary" ng-click="removeRow()">Remove</button>
+    </div>
+</div>    
+    
 <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
         <div class="gridStyle" ng-grid="gridOptions"></div>
     </div>
 </div>
+
     
 <div class="row">        
-    <div class="col-sm-offset-4">
+    <div class="col-sm-offset-5">
         <button class="btn btn-secondary" ng-click="reset()" ng-disabled="isUnchanged(user)">RESET</button>
         <button class="btn btn-primary" ng-click="update(invoice)" ng-disabled="invoiceForm.$invalid || isUnchanged(invoice)">
             SAVE
         </button>
     </div>
 </div>
+    
 </form>
