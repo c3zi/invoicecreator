@@ -7,6 +7,7 @@ var myApp = angular.module('myApp',
         'ngGrid',
         'ui.bootstrap',
         'directives.form',
+        'directives.tools',
         'invoice'
     ]);
 
