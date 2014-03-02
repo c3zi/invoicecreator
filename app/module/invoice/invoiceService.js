@@ -1,17 +1,25 @@
 /*global angular*/
-"use strict";
 
 angular.module('invoice.services', [])
-    .factory('serverService', ['$http', function ($http) {
-
-        var doPreview = function (data) {
-//            return $(http)
-            location.header = '/preview.php';
+    .service('invoiceService', ['$http', function ($http) {
+        var invoice = {
+            owner: {},
+            customer: {},
+            entries: [],
+            total: 0,
+            totalWithTax: 0
         };
 
         return {
-            'preview': function(data) {
-                return doPreview(data);
+            initialize: function (owner, customer, entries, total, totalWithTax) {
+                invoice.owner = owner;
+                invoice.customer = customer;
+                invoice.entries = entries;
+                invoice.total = total;
+                invoice.totalWithTax = totalWithTax;
+            },
+            fetch: function () {
+                return invoice;
             }
         };
     }]);

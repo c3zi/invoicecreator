@@ -1,83 +1,125 @@
 <div class="row">
-	<address>
-	  <strong>Twitter, Inc.</strong><br>
-	  795 Folsom Ave, Suite 600<br>
-	  San Francisco, CA 94107<br>
-	  <abbr title="Phone">P:</abbr> (123) 456-7890
-	</address>
-</div>
-
-<form class="invoice-form css-form" name="invoiceForm" role="form" novalidate>
-<div class="row">
-	<h2>Invoice Form <small>(builder form)</small></h2>
-        <div class="col-sm-3 col-sm-offset-0">
-            <h2>FROM</h2>
-            <div class="form-group" ng-class="{ 'has-error' : invoiceForm.name.$invalid && !invoiceForm.name.$pristine }">
-                <label>Name</label>
-                <input rbl-input type="text" name="name" class="form-control" ng-model="invoice.name" required>
-                <p ng-show="invoiceForm.name.$invalid && !invoiceForm.name.$pristine" class="help-block">Name is required.</p>
-            </div>
-
-            <div class="form-group" ng-class="{ 'has-error' : invoiceForm.address.$invalid && !invoiceForm.address.$pristine }">
-                <label>Address</label>
-                <input rbl-input type="text" name="address" class="form-control" ng-model="invoice.address" tooltip="Address" required>
-                <p ng-show="invoiceForm.address.$invalid && !invoiceForm.address.$pristine" class="help-block">Address is required.</p>
-            </div>
-            <div class="form-group" ng-class="{ 'has-error' : invoiceForm.city.$invalid && !invoiceForm.city.$pristine }">
-                <label>City</label>
-                <input rbl-input type="text" name="city" class="form-control" ng-model="invoice.city" tooltip="Address" required>
-                <p ng-show="invoiceForm.city.$invalid && !invoiceForm.city.$pristine" class="help-block">City is required.</p>
-            </div>
-            <div class="form-group" ng-class="{ 'has-error' : invoiceForm.nip.$invalid && !invoiceForm.nip.$pristine }">
-                <label>NIP</label>
-                <input rbl-input type="text" name="nip" class="form-control" ng-model="invoice.nip" tooltip="NIP" required>
-                <p ng-show="invoiceForm.nip.$invalid && !invoiceForm.nip.$pristine" class="help-block">NIP is required.</p>
-            </div>
-            <div class="form-group" ng-class="{ 'has-error' : invoiceForm.regon.$invalid && !invoiceForm.regon.$pristine }">
-                <label>City</label>
-                <input rbl-input type="text" name="regon" class="form-control" ng-model="invoice.regon" tooltip="Regon">
-                <!--<p ng-show="invoiceForm.regon.$invalid && !invoiceForm.regon.$pristine" class="help-block">Regon is required.</p>-->
-            </div>
-
-        </div>
-
-        <div class="col-sm-3 col-sm-offset-6">
-            <h2>TO</h2>
-            <div class="form-group" ng-class="{ 'has-error' : invoiceForm.name.$invalid && !invoiceForm.name.$pristine }">
-                <label>Name</label>
-                <input rbl-input type="text" name="name" class="form-control" ng-model="invoice.name" tooltip="Name" required>
-                <p ng-show="invoiceForm.name.$invalid && !invoiceForm.name.$pristine" class="help-block">Name is required.</p>
-            </div>
-
-            <div class="form-group" ng-class="{ 'has-error' : invoiceForm.address.$invalid && !invoiceForm.address.$pristine }">
-                <label>Address</label>
-                <input rbl-input type="text" name="address" class="form-control" ng-model="invoice.address" tooltip="Address" required>
-                <p ng-show="invoiceForm.address.$invalid && !invoiceForm.address.$pristine" class="help-block">Address is required.</p>
-            </div>
-        </div>
-</div>
-    
-<div class="row">
-    <div class="cols-sm-10 col-sm-offset-5">
-        <button type="button" class="btn btn-secondary" ng-click="addRow()">Add</button>
-        <button type="button" class="btn btn-secondary" ng-click="removeRow()">Remove</button>
+    <div class="col-sm-12 col-sm-offset-4">
+        <h2>Invoice Generator <small>(by RebelSoft)</small></h2>
     </div>
-</div>    
-    
+</div>
+<div class="row">
+    <form class="invoice-form css-form" name="invoiceForm" role="form" novalidate>
+        <div class="col-sm-3 col-sm-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Owner</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceForm.name.$invalid && !invoiceForm.name.$pristine }">
+                        <label>Name</label>
+                        <input rbl-input type="text" name="name" class="form-control" ng-model="owner.name" required>
+                        <p ng-show="invoiceForm.name.$invalid && !invoiceForm.name.$pristine" class="help-block">Name is required.</p>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceForm.address.$invalid && !invoiceForm.address.$pristine }">
+                        <label>Address</label>
+                        <input rbl-input type="text" name="address" class="form-control" ng-model="owner.address" tooltip="Address" required>
+                        <p ng-show="invoiceForm.address.$invalid && !invoiceForm.address.$pristine" class="help-block">Address is required.</p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceForm.city.$invalid && !invoiceForm.city.$pristine }">
+                        <label>City</label>
+                        <input rbl-input type="text" name="city" class="form-control" ng-model="owner.city" tooltip="Address" required>
+                        <p ng-show="invoiceForm.city.$invalid && !invoiceForm.city.$pristine" class="help-block">City is required.</p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceForm.country.$invalid && !invoiceForm.country.$pristine }">
+                        <label>Country</label>
+                        <input rbl-input type="text" name="country" class="form-control" ng-model="owner.country" tooltip="Country" required>
+                        <p ng-show="invoiceForm.country.$invalid && !invoiceForm.country.$pristine" class="help-block">Country is required.</p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceForm.postcode.$invalid && !invoiceForm.postcode.$pristine }">
+                        <label>Postcode</label>
+                        <input rbl-input type="text" name="postcode" class="form-control" ng-model="owner.postcode" tooltip="Postcode" required>
+                        <p ng-show="invoiceForm.postcode.$invalid && !invoiceForm.postcode.$pristine" class="help-block">Postcode is required.</p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceForm.nip.$invalid && !invoiceForm.nip.$pristine }">
+                        <label>NIP</label>
+                        <input rbl-input type="text" name="nip" class="form-control" ng-model="owner.nip" tooltip="NIP" required>
+                        <p ng-show="invoiceForm.nip.$invalid && !invoiceForm.nip.$pristine" class="help-block">NIP is required.</p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceForm.regon.$invalid && !invoiceForm.regon.$pristine }">
+                        <label>Regon</label>
+                        <input rbl-input type="text" name="regon" class="form-control" ng-model="owner.regon" tooltip="Regon">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+    <form class="invoice-form css-form" name="invoiceCustomerForm" role="form" novalidate>
+        <div class="col-sm-3 col-sm-offset-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Customer</h4>
+                </div>
+                <div class="panel-body">
+
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceCustomerForm.name.$invalid && !invoiceCustomerForm.name.$pristine }">
+                        <label>Name</label>
+                        <input rbl-input type="text" name="name" class="form-control" ng-model="customer.name" tooltip="Name" required>
+                        <p ng-show="invoiceCustomerForm.name.$invalid && !invoiceCustomerForm.name.$pristine" class="help-block">Name is required.</p>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceForm.address.$invalid && !invoiceForm.address.$pristine }">
+                        <label>Address</label>
+                        <input rbl-input type="text" name="address" class="form-control" ng-model="customer.address" tooltip="Address" required>
+                        <p ng-show="invoiceForm.address.$invalid && !invoiceForm.address.$pristine" class="help-block">Address is required.</p>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceForm.city.$invalid && !invoiceForm.city.$pristine }">
+                        <label>Town/City</label>
+                        <input rbl-input type="text" name="address" class="form-control" ng-model="customer.city" tooltip="City" required>
+                        <p ng-show="invoiceForm.city.$invalid && !invoiceForm.city.$pristine" class="help-block">City is required.</p>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceForm.country.$invalid && !invoiceForm.country.$pristine }">
+                        <label>Country</label>
+                        <input rbl-input type="text" name="country" class="form-control" ng-model="customer.country" tooltip="Country" required>
+                        <p ng-show="invoiceForm.country.$invalid && !invoiceForm.country.$pristine" class="help-block">Country is required.</p>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceForm.postcode.$invalid && !invoiceForm.postcode.$pristine }">
+                        <label>Postcode</label>
+                        <input rbl-input type="text" name="postcode" class="form-control" ng-model="customer.postcode" tooltip="Postcode" required>
+                        <p ng-show="invoiceForm.postcode.$invalid && !invoiceForm.postcode.$pristine" class="help-block">Postcode is required.</p>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceForm.nip.$invalid && !invoiceForm.nip.$pristine }">
+                        <label>NIP</label>
+                        <input rbl-input type="text" name="nip" class="form-control" ng-model="customer.nip" tooltip="NIP" required>
+                        <p ng-show="invoiceForm.nip.$invalid && !invoiceForm.nip.$pristine" class="help-block">NIP is required.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
 <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
         <div class="gridStyle" ng-grid="gridOptions"></div>
-    </div>
-</div>
+        <br>
+        <div>
+            <button class="btn btn-success" ng-click="addRow()" type="button">Add</button>
+            <button class="btn btn-danger" ng-click="removeRow()" type="button" >Remove</button>
+            <!--<button class="btn btn-secondary" ng-click="reset()" ng-disabled="isUnchanged(user)">Reset</button>-->
+            <button class="btn btn-primary" ng-click="update(invoice)" ng-disabled="invoiceForm.$invalid || isUnchanged(invoice)">
+                Preview PDF
+            </button>
 
-    
-<div class="row">        
-    <div class="col-sm-offset-5">
-        <button class="btn btn-secondary" ng-click="reset()" ng-disabled="isUnchanged(user)">RESET</button>
-        <button class="btn btn-primary" ng-click="update(invoice)" ng-disabled="invoiceForm.$invalid || isUnchanged(invoice)">
-            SAVE
-        </button>
+        </div>
     </div>
 </div>
-    
-</form>
+<br>
+<br>
+<br>
+<br>
+

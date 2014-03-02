@@ -17,8 +17,10 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
     $routeProvider.when('/start',  {
         controller: 'mainController',
         templateUrl: '/module/invoice/templates/mainTemplate.html'
-    })
-        .otherwise({
-            redirectTo: '/'
-        });
+    }).when('/preview', {
+        controller: 'previewController',
+        templateUrl: '/module/invoice/templates/previewTemplate.html'
+    }).otherwise({
+        redirectTo: '/'
+    });
 }]);
