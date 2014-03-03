@@ -1,0 +1,18 @@
+{
+    "owner": {
+        "name": "RebelSoft",
+        "address": "Żytnia 24K/9",
+        "city": "Koszalin",
+        "country": "Polska",
+        "postcode": "75-818",
+        "nip": "669-235-09-13"
+    },
+    "customer": {
+        "name": "Research & Engineering Center Sp. z o.o.",
+        "address": "Strzegomska 46B",
+        "city": " Wrocław",
+        "country": "Polska",
+        "postcode": "53-611",
+        "nip": "894-292-49-78"
+    }
+}

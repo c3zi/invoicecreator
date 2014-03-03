@@ -1,8 +1,14 @@
 /*global angular*/
 
-angular.module('invoice', ['invoice.services'])
-    .controller('mainController', function ($scope, $location, invoiceService) {
+angular.module('invoice', ['invoice.services', 'common.services'])
+    .controller('mainController', function ($scope, $location, $http, invoiceService, dateService) {
         var cellEditableTemplate = "<input ng-class=\"'colt' + col.index\" ng-input=\"COL_FIELD\" ng-model=\"COL_FIELD\" ng-change=\"updateEntity(col, row)\"/>";
+        $scope.dateOptions = {
+            'year-format': "'yy'",
+            'starting-day': 1
+        };
+
+        $scope.format = "yyyy-MM-dd";
 
         $scope.tax = 1.23;
         $scope.owner = {
@@ -12,13 +18,10 @@ angular.module('invoice', ['invoice.services'])
             city: "Town/City",
             country: "Country",
             postcode: "Postcode",
-
             nip: "NIP number",
             regon: "Regon number",
-
             bank_name: "Bank Name",
             bank_account: "Account Number",
-
             email: "Your e-mail",
             phone: "Your phone"
         };
@@ -31,6 +34,33 @@ angular.module('invoice', ['invoice.services'])
             postcode: "Postcode",
             nip: "NIP number"
         };
+
+        $scope.details = {
+            number: "1/01/2014",
+            issued: dateService.getIssuedDate(),
+            due: dateService.getDueDate()
+        };
+
+        $http.get('invoice.json').success(function(data) {
+
+            for (item in data.owner) {
+                if (item in $scope.owner) {
+                    $scope.owner[item] = data.owner[item];
+                }
+
+            }
+
+            for (item in data.customer) {
+                if (item in $scope.customer) {
+                    $scope.customer[item] = data.customer[item];
+                }
+
+            }
+//            return false;
+//            $scope.owner = data.owner;
+//            $scope.customer = data.customer;
+        });
+
 
         $scope.gridData = [
             {quantity: 1, description: "Implementing new search engine 1.", unitprice: "100.00", total: "100.00"},
@@ -83,13 +113,9 @@ angular.module('invoice', ['invoice.services'])
         $scope.master = {};
 
         $scope.update = function (invoice) {
-            invoiceService.initialize($scope.owner, $scope.customer, $scope.gridData, $scope.total, $scope.totalWithTax);
+            invoiceService.initialize($scope.owner, $scope.customer, $scope.gridData, $scope.details, $scope.total, $scope.totalWithTax);
             $location.path("/preview");
             $scope.master = angular.copy(invoice);
-        };
-
-        $scope.reset = function () {
-//            $scope.invoice = angular.copy($scope.master);
         };
 
         $scope.isUnchanged = function (invoice) {
@@ -107,10 +133,9 @@ angular.module('invoice', ['invoice.services'])
         };
 
         getTotal();
-
-//        $scope.reset();
     })
     .controller('previewController', function ($scope, $window, invoiceService) {
         $scope.invoiceData = invoiceService.fetch();
         console.log($scope.invoiceData);
+        $scope.invoiceData.tax = ($scope.invoiceData.totalWithTax-$scope.invoiceData.total).toFixed(2);
     });

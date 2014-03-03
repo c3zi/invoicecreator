@@ -6,15 +6,17 @@ angular.module('invoice.services', [])
             owner: {},
             customer: {},
             entries: [],
+            details: [],
             total: 0,
             totalWithTax: 0
         };
 
         return {
-            initialize: function (owner, customer, entries, total, totalWithTax) {
+            initialize: function (owner, customer, entries, details, total, totalWithTax) {
                 invoice.owner = owner;
                 invoice.customer = customer;
                 invoice.entries = entries;
+                invoice.details = details;
                 invoice.total = total;
                 invoice.totalWithTax = totalWithTax;
             },

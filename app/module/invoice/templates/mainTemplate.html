@@ -6,7 +6,7 @@
 <div class="row">
     <form class="invoice-form css-form" name="invoiceForm" role="form" novalidate>
         <div class="col-sm-3 col-sm-offset-0">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4>Owner</h4>
                 </div>
@@ -49,13 +49,41 @@
                 </div>
             </div>
         </div>
-
-
     </form>
 
+    <form class="invoice-form css-form" name="invoiceDetailsForm" role="form" novalidate>
+        <div class="col-sm-4 col-sm-offset-1">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4>Details</h4>
+                </div>
+                <div class="panel-body">
+
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceDetailsForm.number.$invalid && !invoiceDetailsForm.number.$pristine }">
+                        <label>Invoice number</label>
+                        <input type="text" name="number" class="form-control" ng-model="details.number" required>
+                        <p ng-show="invoiceDetailsForm.number.$invalid && !invoiceDetailsForm.number.$pristine" class="help-block">Invoice number is required.</p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceDetailsForm.issued.$invalid && !invoiceDetailsForm.issued.$pristine }">
+                        <label>Issued date</label>
+                        <input type="text" class="form-control" ng-model="details.issued"
+                            datepicker-popup="{{format}}" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                        <p ng-show="invoiceDetailsForm.issued.$invalid && !invoiceDetailsForm.issued.$pristine" class="help-block">Issued date is required.</p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceDetailsForm.issued.$invalid && !invoiceDetailsForm.issued.$pristine }">
+                        <label>Due date</label>
+                        <input type="text" name="due" class="form-control" ng-model="details.due"
+                               datepicker-popup="{{format}}" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                        <p ng-show="invoiceDetailsForm.due.$invalid && !invoiceDetailsForm.due.$pristine" class="help-block">Due date is required.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
     <form class="invoice-form css-form" name="invoiceCustomerForm" role="form" novalidate>
-        <div class="col-sm-3 col-sm-offset-6">
-            <div class="panel panel-default">
+        <div class="col-sm-3 col-sm-offset-1">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h4>Customer</h4>
                 </div>

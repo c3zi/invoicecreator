@@ -5,7 +5,8 @@
     <title>INVOICE Template</title>
     <style>
         @import url(http://fonts.googleapis.com/css?family=Bree+Serif);
-        body, h1, h2, h3, h4, h5, h6{
+
+        body, h1, h2, h3, h4, h5, h6 {
             font-family: 'Bree Serif', serif;
         }
     </style>
@@ -15,119 +16,134 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-6">
-            <h1>
+            <h4>
                 <a href="https://twitter.com/tahirtaous">
-                    <img src="/img/rebelsoft.png" />
+                    <img src="/img/rebelsoft.png"/>
                 </a>
-            </h1>
+            </h4>
         </div>
         <div class="col-xs-6 text-right">
-            <h1>INVOICE</h1>
-            <h1><small>Invoice #001</small></h1>
+            <h4>
+                <small>Invoice Number:</small>
+                {{invoiceData.details.number}}
+            </h4>
+            <h4>
+                <small>Date:</small>
+                {{invoiceData.details.issued}}
+            </h4>
         </div>
-        <hr>
-        <div class="row">
-            <div class="col-xs-5">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4>From: <a href="#">{{invoiceData.owner.name}}</a></h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>
-                            {{invoiceData.owner.address}} <br>
-                            {{invoiceData.owner.city}} <br>
-                            {{invoiceData.owner.nip}} <br>
-                            {{invoiceData.owner.regon}} <br>
-                        </p>
-                    </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-xs-5">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>From: <a href="#">{{invoiceData.owner.name}}</a></h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        {{invoiceData.owner.address}} <br>
+                        {{invoiceData.owner.city}} <br>
+                        {{invoiceData.owner.nip}} <br>
+                        {{invoiceData.owner.regon}} <br>
+                    </p>
                 </div>
             </div>
-            <div class="col-xs-5 col-xs-offset-2 text-right">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4>To : <a href="#">{{invoiceData.customer.name}}</a></h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>
-                            {{invoiceData.customer.address}} <br>
-                            {{invoiceData.customer.city}} <br>
-                            {{invoiceData.customer.nip}} <br>
-                        </p>
-                    </div>
+        </div>
+        <div class="col-xs-5 col-xs-offset-2 text-right">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>To : <a href="#">{{invoiceData.customer.name}}</a></h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        {{invoiceData.customer.address}} <br>
+                        {{invoiceData.customer.city}} <br>
+                        {{invoiceData.customer.nip}} <br>
+                    </p>
                 </div>
             </div>
-        </div> <!-- / end client details section -->
+        </div>
+    </div>
+    <!-- / end client details section -->
 
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th><h4>Quantity</h4></th>
-                    <th><h4>Description</h4></th>
-                    <th><h4>Rate/Price</h4></th>
-                    <th><h4>Sub Total</h4></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="item in invoiceData.entries">
-                    <td>{{item.quantity}}</td>
-                    <td><a href="#">{{item.description}}</a></td>
-                    <td class="text-right">{{item.unitprice}}</td>
-                    <td class="text-right">{{item.total}}</td>
-                </tr>
-            </tbody>
-        </table>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th><h4>Quantity</h4></th>
+            <th><h4>Description</h4></th>
+            <th><h4>Rate/Price</h4></th>
+            <th><h4>Sub Total</h4></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in invoiceData.entries">
+            <td>{{item.quantity}}</td>
+            <td><a href="#">{{item.description}}</a></td>
+            <td class="text-right">{{item.unitprice}}</td>
+            <td class="text-right">{{item.total}}</td>
+        </tr>
+        </tbody>
+    </table>
 
-        <div class="row text-right">
-            <div class="col-xs-2 col-xs-offset-8">
-                <p>
-                    <strong>
-                        Sub Total : <br>
-                        TAX : <br>
-                        Total : <br>
-                    </strong>
-                </p>
-            </div>
-            <div class="col-xs-2">
+    <div class="row text-right">
+        <div class="col-xs-2 col-xs-offset-8">
+            <p>
                 <strong>
-                    {{invoiceData.total}} <br>
-                    N/A <br>
-                    {{invoiceData.totalWithTax}} <br>
+                    Sub Total : <br>
+                    TAX : <br>
+                    Total : <br>
                 </strong>
+            </p>
+        </div>
+        <div class="col-xs-2">
+            <strong>
+                {{invoiceData.total}} <br>
+                {{invoiceData.tax}} <br>
+                {{invoiceData.totalWithTax}} <br>
+            </strong>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-5">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4>Payment Informations</h4>
+                </div>
+                <div class="panel-body">
+                    <p>Your Name</p>
+
+                    <p>Bank Name</p>
+
+                    <p>Account Number : 12345678</p>
+
+                    <p><strong>Payment Date: </strong><span>{{invoiceData.details.due}}</span></p>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-5">
+        <div class="col-xs-7">
+            <div class="span7">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h4>Bank details</h4>
+                        <h4>Contact Details</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Your Name</p>
-                        <p>Bank Name</p>
-                        <!--<p>SWIFT : -------</p>-->
-                        <p>Account Number : 12345678</p>
-                        <!--<p>IBAN : ------</p>-->
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-7">
-                <div class="span7">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <h4>Contact Details</h4>
-                        </div>
-                        <div class="panel-body">
-                            <p>
-                                Email : you@example.com <br><br>
-                                Mobile : +92123456789 <br> <br>
-                            </p>
-                            <h4><small>payment should be mabe by Bank Transfer</h4>
-                        </div>
+                        <p>
+                            Email : you@example.com <br><br>
+                            Mobile : +92123456789 <br> <br>
+                        </p>
+                        <h4>
+                            <small>payment should be mabe by Bank Transfer
+                        </h4>
                     </div>
                 </div>
             </div>
         </div>
-    </div> <!-- /row -->
+    </div>
+</div>
+<!-- /row -->
 </div> <!-- /container -->
 </body>
 </html>
