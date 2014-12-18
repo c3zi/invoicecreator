@@ -146,8 +146,54 @@
         </div>
     </div>
 </div>
-<br>
-<br>
-<br>
-<br>
-
+<br />
+<div class="row">
+    <form class="invoice-form css-form" name="invoicePaymentForm" role="form" novalidate>
+        <div class="col-xs-7">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4>Payment Information</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group" ng-class="{ 'has-error' : invoicePaymentForm.name.$invalid && !invoicePaymentForm.name.$pristine }">
+                        <label>Name</label>
+                        <input rbl-input type="text" name="name" class="form-control" ng-model="payment.name" tooltip="Name" required>
+                        <p ng-show="invoicePaymentForm.name.$invalid && !invoicePaymentForm.name.$pristine" class="help-block">Name is required.</p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : invoicePaymentForm.bankname.$invalid && !invoicePaymentForm.bankname.$pristine }">
+                        <label>Bank Name</label>
+                        <input rbl-input type="text" name="bankname" class="form-control" ng-model="payment.bankname" tooltip="Bank Name" required>
+                        <p ng-show="invoicePaymentForm.bankname.$invalid && !invoicePaymentForm.bankname.$pristine" class="help-block">Bank Name is required.</p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : invoicePaymentForm.account.$invalid && !invoicePaymentForm.account.$pristine }">
+                        <label>Account</label>
+                        <input rbl-input type="text" name="account" class="form-control" ng-model="payment.account" tooltip="Account" required>
+                        <p ng-show="invoicePaymentForm.account.$invalid && !invoicePaymentForm.account.$pristine" class="help-block">Account is required.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form class="invoice-form css-form" name="invoiceContactForm" role="form" novalidate>
+        <div class="col-xs-5">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4>Contact Details</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceContactForm.email.$invalid && !invoiceContactForm.email.$pristine }">
+                        <label>Email</label>
+                        <input rbl-input type="text" name="email" class="form-control" ng-model="contact.email" tooltip="Email">
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : invoiceContactForm.mobile.$invalid && !invoiceContactForm.mobile.$pristine }">
+                        <label>Mobile phone</label>
+                        <input rbl-input type="text" name="mobile" class="form-control" ng-model="contact.mobile" tooltip="Mobile phone number">
+                    </div>
+                    <h4>
+                        <small>payment should be mabe by Bank Transfer
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

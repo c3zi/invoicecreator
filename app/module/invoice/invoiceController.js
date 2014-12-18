@@ -41,24 +41,44 @@ angular.module('invoice', ['invoice.services', 'common.services'])
             due: dateService.getDueDate()
         };
 
-        $http.get('invoice.json').success(function(data) {
+        $scope.payment = {
+            name: 'Name',
+            bankname: 'Bank Name',
+            account: 'Account number'
+        }
+
+        $scope.contact = {
+            email: 'Email',
+            mobile: 'Mobile phone'
+        }
+
+
+        $http.get('invoice.json?version=' + new Date().getTime()).success(function(data) {
 
             for (item in data.owner) {
                 if (item in $scope.owner) {
                     $scope.owner[item] = data.owner[item];
                 }
-
             }
 
             for (item in data.customer) {
                 if (item in $scope.customer) {
                     $scope.customer[item] = data.customer[item];
                 }
-
             }
-//            return false;
-//            $scope.owner = data.owner;
-//            $scope.customer = data.customer;
+
+            for (item in data.payment) {
+                if (item in $scope.payment) {
+                    $scope.payment[item] = data.payment[item];
+                }
+            }
+
+            for (item in data.contact) {
+                if (item in $scope.contact) {
+                    $scope.contact[item] = data.contact[item];
+                }
+            }
+
         });
 
 
@@ -113,7 +133,7 @@ angular.module('invoice', ['invoice.services', 'common.services'])
         $scope.master = {};
 
         $scope.update = function (invoice) {
-            invoiceService.initialize($scope.owner, $scope.customer, $scope.gridData, $scope.details, $scope.total, $scope.totalWithTax);
+            invoiceService.initialize($scope.owner, $scope.customer, $scope.payment, $scope.contact, $scope.gridData, $scope.details, $scope.total, $scope.totalWithTax);
             $location.path("/preview");
             $scope.master = angular.copy(invoice);
         };
@@ -136,6 +156,5 @@ angular.module('invoice', ['invoice.services', 'common.services'])
     })
     .controller('previewController', function ($scope, $window, invoiceService) {
         $scope.invoiceData = invoiceService.fetch();
-        console.log($scope.invoiceData);
         $scope.invoiceData.tax = ($scope.invoiceData.totalWithTax-$scope.invoiceData.total).toFixed(2);
     });

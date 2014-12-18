@@ -14,5 +14,14 @@
         "country": "Polska",
         "postcode": "53-611",
         "nip": "894-292-49-78"
+    },
+    "payment": {
+        "name": "Zenek Konewka",
+        "bankname": "IdeaBank",
+        "account": "1234 1234 1234 1234 1234"
+    },
+    "contact": {
+        "email": "zenek@example.com",
+        "mobile": "+48 111 222 333"
     }
 }

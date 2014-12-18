@@ -5,6 +5,8 @@ angular.module('invoice.services', [])
         var invoice = {
             owner: {},
             customer: {},
+            payment: {},
+            contact: {},
             entries: [],
             details: [],
             total: 0,
@@ -12,9 +14,11 @@ angular.module('invoice.services', [])
         };
 
         return {
-            initialize: function (owner, customer, entries, details, total, totalWithTax) {
+            initialize: function (owner, customer, payment, contact, entries, details, total, totalWithTax) {
                 invoice.owner = owner;
                 invoice.customer = customer;
+                invoice.payment = payment;
+                invoice.contact = contact;
                 invoice.entries = entries;
                 invoice.details = details;
                 invoice.total = total;
